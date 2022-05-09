@@ -183,8 +183,22 @@ class App extends Component {
   render() {
     let params = (new URL(window.document.location)).searchParams;
     let user = params.get("user");
-    if (user)
-      return <AvatarWindow currentState={this.state} />
+    let search = params.get("search");
+    console.log(search);
+    if (user) {
+      return (
+        <div>
+          {search ?
+            <div style={{ position: "absolute", marginLeft:"57px",marginTop:"12px" }}>
+              <input></input>
+              <button>search</button>
+            </div> : ""}
+          <div style={search?{float:"left",marginTop:"20px"}:{}}>
+            <AvatarWindow currentState={this.state} />
+          </div>
+        </div>
+      )
+    }
     return (
       <div className="App">
         {/*
@@ -193,6 +207,10 @@ class App extends Component {
             */}
 
         <div id="container">
+          <div id="manage">
+            <button> Log In</button>
+            <button> Log Out </button>
+          </div>
           <Logo /> {/*The div which displays the Logo. */}
           <AvatarWindow currentState={this.state} />{" "}
           {/* Generates the div where the avatar is shown. (Includes VaultSuit and VaultPerson.) */}
