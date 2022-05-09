@@ -1,0 +1,123 @@
+body {
+  /*background-color: lightgray;*/
+  /*background-image: url('./Images/Wiki-background.jpg');*/
+
+  background-color: #000;
+  background-image: linear-gradient(to bottom, #151212, #151212, #151212, #000);
+  /*background-image: linear-gradient(to bottom, #151212 65%, #000);*/
+  cursor: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/XXV3-default.png"),
+    auto;
+  height: 1200px;
+  /*background:-moz-linear-gradient(bottom, red, blue) no-repeat orange;*/
+  /*background:-webkit-gradient(linear, left top, left bottom, from(red), to(blue)) no-repeat orange;*/
+  background-repeat: no-repeat;
+}
+
+.App {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/NBxY-atlas_2_day.jpeg");
+  background-repeat: repeat-x;
+}
+
+/* .text, .prevNextType, .labelType, .styleType, .genderText {
+  margin: 0 auto;
+  max-width: 350px;
+  cursor: url('./Cursors/text.png'), auto;
+} */
+
+.prevNextButton,
+.slider,
+.btnRandom {
+  cursor: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/3k4r-pointer.png"),
+    auto;
+}
+
+@font-face {
+  font-family: monoFonto;
+  src: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/5Y-X-monofonto.ttf");
+}
+
+@font-face {
+  font-family: overseer;
+  src: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/5DH--Overseer.otf");
+}
+
+@font-face {
+  font-family: futuraCondensedPT;
+  src: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/W70X-futura-condensed-pt-medium.woff");
+}
+
+.atlas01 {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/Ur7D-atlas01_2.png");
+}
+
+.atlas02 {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/NdfT-atlas02.png");
+}
+
+.atlas03 {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/H1Tr-atlas03_2.png");
+}
+
+.atlas04 {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/k5m_-atlas04.png");
+}
+
+.atlas05 {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/plVT-atlas05.png");
+}
+
+.atlas06 {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/YTfG-atlas06.png");
+}
+
+.atlas07 {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/rs-c-atlas07.png");
+}
+
+.atlas08 {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/WVx--atlas08.png");
+}
+
+.atlas09 {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/gaWe-atlas09.png");
+}
+
+.atlas10 {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/YJVr-atlas10.png");
+}
+
+.atlas11 {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/IkL3-atlas11.png");
+}
+
+.atlas12 {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/urTy-atlas12.png");
+}
+
+.atlas13 {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/qnOy-atlas13.png");
+}
+
+.atlas14 {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/r9TC-atlas14.png");
+}
+
+.atlas15 {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/lDrq-atlas15.png");
+}
+
+.atlas16 {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/RHO2-atlas16.png");
+}
+
+.atlas17 {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/S4VY-atlas17_2.png");
+}
+
+.atlas18 {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/HZFm-atlas18.png");
+}
+
+.atlas21 {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/60cb3b56-b7ef-4091-a89c-b254f042f4a6/AwEF-atlas21.png");
+}

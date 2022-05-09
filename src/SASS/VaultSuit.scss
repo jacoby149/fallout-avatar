@@ -1,0 +1,129 @@
+@import 'mixins';
+
+/*$arm_top: 65px;
+
+$leg_top: 200px;
+
+$headtorso_left: 43px;
+
+$arm_upperhalf_top: 45px;
+
+$arm_lowerhalf_top: 90px;
+*/
+
+
+
+
+/* This is each piece of Vault Boy's Suit. */
+.vbs_frontarm_lowerhalf, .vbs_frontarm_upperhalf, .vbs_frontarm_glove, .vbs_hat, .vb_feature, .vbs_chest, .vbs_fronthem, .vbs_backhem, .vbs_skirt, .vbs_frontleg_upperhalf, .vbs_frontleg_lowerhalf, .vbs_frontleg_foot, .vbs_crotch, .vbs_backleg_upperhalf, .vbs_backleg_lowerhalf, .vbs_backleg_foot, .vbs_backarm_lowerhalf, .vbs_backarm_upperhalf, .vbs_backarm_glove {
+	position: absolute;
+}
+
+/* This is each piece of Vault Girl's Suit. */
+.vgs_frontarm_lowerhalf, .vgs_frontarm_upperhalf, .vgs_frontarm_glove, .vgs_hat, .vg_feature, .vgs_chest, .vgs_fronthem, .vgs_backhem, .vgs_skirt, .vgs_frontleg_upperhalf, .vgs_frontleg_lowerhalf, .vgs_frontleg_foot, .vgs_crotch, .vgs_backleg_upperhalf, .vgs_backleg_lowerhalf, .vgs_backleg_foot, .vgs_backarm_lowerhalf, .vgs_backarm_upperhalf, .vgs_backarm_glove {
+	position: absolute;
+}
+
+.vbs_frontarm_lowerhalf, .vgs_frontarm_lowerhalf {
+	z-index: 64;
+}
+
+.vbs_frontarm_upperhalf, .vgs_frontarm_upperhalf {
+	z-index: 63;
+}
+
+.vbs_frontarm_glove, .vgs_frontarm_glove {
+	z-index: 62;
+}
+
+
+
+
+
+.vbs_chest, .vgs_chest {
+	z-index: 53;
+}
+
+.vbs_hem, .vgs_hem { /* Hems - But not all outfits have hems. */
+
+}
+
+.vbs_fronthem, .vgs_fronthem {
+	left: -17px;
+	top: 68px;
+  	width: 80px;
+  	height: 115px;
+ 	background-position: ($chest_x - $outfit_BDFH_x) $chest_y;
+ 	transform: scaleX(-1);
+	z-index: 52;
+}
+
+.vbs_backhem, .vgs_backhem {
+	left: 63px;
+	top: 68px;
+	width: 50px;
+  	height: 115px;
+  	background-position: ($chest_x - $outfit_BDFH_x) $chest_y;
+  	transform: scaleX(-1);
+	z-index: 51;
+}
+
+.vgs_skirt { /* Skirt - But not all outfits have a skirt. */
+	left: -17px;
+	top: 68px;
+  	width: 150px;
+  	height: 135px;
+ 	background-position: ($chest_x - $outfit_BDFH_x) $chest_y;
+ 	transform: scaleX(-1);
+	z-index: 51;
+
+				top: 83px;
+				left: -24px;
+}
+
+.vbs_frontleg_upperhalf, .vgs_frontleg_upperhalf {
+	z-index: 43;
+}
+
+.vbs_frontleg_lowerhalf, .vgs_frontleg_lowerhalf {
+	z-index: 42;
+}
+
+.vbs_frontleg_foot, .vgs_frontleg_foot {
+	z-index: 41;
+}
+
+.vbs_crotch {
+	z-index: 31;
+}
+
+.vbs_backleg_upperhalf, .vgs_backleg_upperhalf {
+	z-index: 23;
+}
+
+.vbs_backleg_lowerhalf, .vgs_backleg_lowerhalf {
+	z-index: 22;
+}
+
+.vbs_backleg_foot, .vgs_backleg_foot {
+	z-index: 21;
+}
+
+.vbs_backarm_lowerhalf, .vgs_backarm_lowerhalf {
+	z-index: 14;
+}
+
+.vbs_backarm_upperhalf, .vgs_backarm_upperhalf {
+	z-index: 13;
+}
+
+.vbs_backarm_glove, .vgs_backarm_glove {
+	z-index: 12;
+}
+
+
+
+
+
+
+

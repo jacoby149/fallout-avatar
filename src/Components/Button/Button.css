@@ -1,0 +1,150 @@
+.buttonsRow {
+	height: 44px;
+	position: relative;
+	display: flex;
+    align-items: center;
+}
+
+/* Classes for next & previous buttons. */
+.prevNextType {
+	margin: 0 auto;
+	width: 190px;
+	float: left;
+	font-size: 28px;
+  transition: 0.5s font-size;
+}
+
+.displayRow {
+	height: 60px;
+	position: relative;
+	display: flex;
+    align-items: center;
+}
+
+
+.prevNextButton:hover, .btnRandom:hover {
+  color: #00d8ff;
+  transition: color .3s;
+}
+.prevNextButton:active, .btnRandom:active {
+  color: #FFF;
+  font-size: 30px;
+  transition: font-size color .3s;
+}
+
+.prevNextButton {
+  width: 80px;
+  font-size: 30px;
+}
+
+
+
+.labelType, .styleType {
+	
+}
+
+.labelType {
+	width: 35%;
+	position: relative;
+	text-align: right;
+	font-family: monoFonto, 'Roboto Condensed', futuraCondensedPT, 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+.styleType {
+	width: 65%;
+	position: relative;
+	text-transform: capitalize;
+	font-family: 'Roboto Condensed', monoFonto, futuraCondensedPT, 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    font-size: 25px;
+}
+
+
+
+
+
+/* Classes for left-right switches */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.genderSlider { /* Male - baby blue. */
+	background-color: #2ecafb;
+}
+
+.basicSlider { /* Basic - green */
+	background-color: #00ff2b;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .genderSlider { /* Female - baby pink. */
+  background-color: #fc7fff;
+}
+
+input:checked + .basicSlider { /* Advanced - red */
+  background-color: #fb2e2e;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #fc7fff;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+
+
+@media  all and (max-width:850px) {
+  .prevNextType {
+    font-size: 25px;
+    transition: 0.5s;
+  }
+
+
+  }

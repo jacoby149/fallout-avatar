@@ -1,0 +1,1 @@
+const face = current_gender === 0 ? male_faces : female_faces;
