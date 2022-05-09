@@ -181,6 +181,10 @@ class App extends Component {
   }
 
   render() {
+    let params = (new URL(window.document.location)).searchParams;
+    let user = params.get("user");
+    if (user)
+      return <AvatarWindow currentState={this.state} />
     return (
       <div className="App">
         {/*
