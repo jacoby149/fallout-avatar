@@ -213,15 +213,15 @@ class App extends Component {
     const t = wapi.readToken();
 
 
-    if (!window.wapi.isSignedIn()) {
+    if (!window.wapi.isSignedIn()||user) {
       window.wapi.authListen(() => {
         this.setState({
           auth: true
         })
       });
-      if (user){
+      if (user) {
         console.log(user)
-        wapi.read('fallout-avatar', {}, user,"api.web10.app").then((resp)=>{
+        wapi.read('fallout-avatar', {}, user, "api.web10.app").then((resp) => {
           let a = { ...resp.data[0] }
           delete a._id
           console.log(a)
@@ -257,8 +257,10 @@ class App extends Component {
             <div>
               {search ?
                 <div style={{ position: "absolute", marginLeft: "57px", marginTop: "12px" }}>
-                  <input></input>
-                  <button>search</button>
+                  <input id="searchUser"></input>
+                  <button onClick={
+                    () => window.location.href = `${window.location.pathname}?user=${document.getElementById("searchUser").value}&search=true`
+                  }>search</button>
                 </div> : ""}
               <div style={search ? { float: "left", marginTop: "20px" } : {}}>
                 <AvatarWindow currentState={this.state} />
