@@ -35,6 +35,7 @@ const sirs = [
   {
     service: "fallout-avatar",
     cross_origins: ["web10-avatar.netlify.app", "localhost"],
+    whitelist: [{ username: ".*", provider: ".*", read: true }],
   },
 ];
 window.wapi.SMROnReady(sirs, []);
@@ -192,21 +193,41 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    // update your avatar
-    let old = { ...prevProps }
-    delete old["auth"]
-    let data = { ...this.state }
-    delete data["auth"]
-    wapi.update('fallout-avatar', old, { $set: data })
+    let params = (new URL(window.document.location)).searchParams;
+    let user = params.get("user");
+    if (!user) {
+      // update your avatar
+      let old = { ...prevProps }
+      delete old["auth"]
+      let data = { ...this.state }
+      delete data["auth"]
+      wapi.update('fallout-avatar', old, { $set: data })
+    }
   }
 
   render() {
+
+    let params = (new URL(window.document.location)).searchParams;
+    let user = params.get("user");
+    let search = params.get("search");
+    const t = wapi.readToken();
+
+
     if (!window.wapi.isSignedIn()) {
       window.wapi.authListen(() => {
         this.setState({
           auth: true
         })
       });
+      if (user){
+        console.log(user)
+        wapi.read('fallout-avatar', {}, user,"api.web10.app").then((resp)=>{
+          let a = { ...resp.data[0] }
+          delete a._id
+          console.log(a)
+          this.setState(a)
+        })
+      }
     }
     else {
       wapi.read('fallout-avatar', {}).then(
@@ -229,10 +250,6 @@ class App extends Component {
           }
         })
     }
-    let params = (new URL(window.document.location)).searchParams;
-    let user = params.get("user");
-    let search = params.get("search");
-    const t = wapi.readToken();
     if (user) {
       return (
         <div>
@@ -268,30 +285,30 @@ class App extends Component {
               </div>}
           </div>
           <Logo /> {/*The div which displays the Logo. */}
-              <AvatarWindow currentState={this.state} />{" "}
-              {/* Generates the div where the avatar is shown. (Includes VaultSuit and VaultPerson.) */}
-              <MainButtons
-                currentState={this.state}
-                handleOptionClick={this.handleOptionClick}
-                handleModeToggle={this.handleModeToggle}
-              />{" "}
-              {/* Generates the div where most of the buttons live. */}
-              <MainSelections
-                currentState={this.state}
-                handleOptionClick={this.handleOptionClick}
-                handleModeToggle={this.handleModeToggle}
-              />{" "}
-              {/* Generates the div that shows the names for most of the Selections. */}
-              <MinorButtons
-                currentState={this.state}
-                handleGenderClick={this.handleGenderClick}
-                handleOptionClick={this.handleOptionClick}
-                handleRandomClick={this.handleRandomClick}
-              />{" "}
-              {/* The div where the Gender, Race, Age buttons live. */}
-              <MinorSelections currentState={this.state} />{" "}
-              {/* The div that shows the names for the Gender, Race, and Age Selections. */}
-              {/*
+          <AvatarWindow currentState={this.state} />{" "}
+          {/* Generates the div where the avatar is shown. (Includes VaultSuit and VaultPerson.) */}
+          <MainButtons
+            currentState={this.state}
+            handleOptionClick={this.handleOptionClick}
+            handleModeToggle={this.handleModeToggle}
+          />{" "}
+          {/* Generates the div where most of the buttons live. */}
+          <MainSelections
+            currentState={this.state}
+            handleOptionClick={this.handleOptionClick}
+            handleModeToggle={this.handleModeToggle}
+          />{" "}
+          {/* Generates the div that shows the names for most of the Selections. */}
+          <MinorButtons
+            currentState={this.state}
+            handleGenderClick={this.handleGenderClick}
+            handleOptionClick={this.handleOptionClick}
+            handleRandomClick={this.handleRandomClick}
+          />{" "}
+          {/* The div where the Gender, Race, Age buttons live. */}
+          <MinorSelections currentState={this.state} />{" "}
+          {/* The div that shows the names for the Gender, Race, and Age Selections. */}
+          {/*
                     <img id="iphoto" src={iphoto} alt="Hey!"/>
                     <img id="guy35" src={Guy35} alt="Hey!"/>
                 */}
