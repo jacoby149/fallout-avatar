@@ -224,8 +224,14 @@ class App extends Component {
         wapi.read('fallout-avatar', {}, user, "api.web10.app").then((resp) => {
           let a = { ...resp.data[0] }
           delete a._id
-          console.log(a)
-          this.setState(a)
+          let curr = { ...this.state }
+          delete curr["auth"]
+          delete curr["init"]
+          delete a["init"]
+          a.init = false;
+          curr.init = false;
+          console.log(JSON.stringify(a),JSON.stringify(curr))
+          if (JSON.stringify(a) !== JSON.stringify(curr)) this.setState(a)
         })
       }
     }
