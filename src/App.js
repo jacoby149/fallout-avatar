@@ -44,6 +44,7 @@ class App extends Component {
     super(props);
     this.state = {
       auth: wapi.isSignedIn(),
+      init:true,
       current_beard: 0, //Initially loads no Beard, 0.
       current_face: 1, //Initially loads Happy, 1.
       current_feature: 0, //Initially loads no Feature, 0.
@@ -191,18 +192,42 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    
-    // wapi.update()
+    // update your avatar
+    let old = {...prevProps}
+    delete old["auth"]
+    let data = {...this.state}
+    delete data["auth"]
+    wapi.update('fallout-avatar',old,{$set:data})
   }
 
   render() {
     if (!window.wapi.isSignedIn()) {
       window.wapi.authListen(() => {
-        console.log("fuck");
         this.setState({
           auth: true
         })
       });
+    }
+    else {
+      wapi.read('fallout-avatar', {}).then(
+        (resp) => {
+          // create an initial avatar
+          if (resp.data.length === 0) {
+            let data = {...this.state}
+            delete data["auth"]
+            wapi.create('fallout-avatar',data)
+          }
+          // show your avatar
+          else if (this.state.init){
+            let a = {...resp.data[0]}
+            delete a._id
+            let curr = {...this.state}
+            delete curr["auth"]
+            a.init=false
+            console.log(curr)
+            if (JSON.stringify(a)!==JSON.stringify(curr)) this.setState(a)
+          }
+        })
     }
     let params = (new URL(window.document.location)).searchParams;
     let user = params.get("user");
@@ -233,7 +258,7 @@ class App extends Component {
                 <button onClick={() => {
                   wapi.signOut();
                   window.location.reload();
-                }}> 
+                }}>
                   Log Out
                 </button>
               </div>}
