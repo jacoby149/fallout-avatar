@@ -6,7 +6,7 @@ const Logo = () => {
 	return (
         <div id="logo">
             <img src={LogoImage} alt="Fallout Shelter logo" />
-            <h1><div class="text">Avatar Maker</div></h1>
+            <h1><div className="text">Avatar Maker</div></h1>
         </div>
 	);
 }

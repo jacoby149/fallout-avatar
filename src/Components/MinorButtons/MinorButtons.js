@@ -11,13 +11,13 @@ const MinorButtons = ({ currentState, handleGenderClick, handleOptionClick, hand
 
     return (
         <div id="minorButtons">
-            <div class="minorTopSideBorders"></div>
+            <div className="minorTopSideBorders"></div>
             <div className="buttonsRow">
                 <div className="leftCol genderText">Gender:</div>
                 <div className="rightCol">
-                    <label class="switch">
+                    <label className="switch">
                         <input id="genderInput" type="checkbox" />
-                        <span class="slider genderSlider round" onClick={() => handleGenderClick()}></span>
+                        <span className="slider genderSlider round" onClick={() => handleGenderClick()}></span>
                     </label>
                 </div>
             </div>
@@ -31,7 +31,7 @@ const MinorButtons = ({ currentState, handleGenderClick, handleOptionClick, hand
             <div className="buttonsRow">
                 <div className="btnRandom" onClick={() => handleRandomClick()}>Random <FontAwesomeIcon icon={faDice} /></div>
             </div>
-            <div class="minorBottomSideBorders"></div>
+            <div className="minorBottomSideBorders"></div>
         </div>
     );
 } 

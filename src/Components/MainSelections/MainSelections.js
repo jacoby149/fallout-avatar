@@ -26,7 +26,7 @@ const MainSelections = ({ currentState, handleOptionClick, handleModeToggle }) =
 	for (var x = 0; x < all_styles.length; x++) { //Iterates through each item in all_styles JSON. Returns a displayRow with labelType and styleType that updates from state.
 		if ((current_mode === 1) || (all_styles[x].mode === 1)) { //Will print the selections if current_mode is 1 (set to Advanced) . Or will print if current item's Mode is 1 (always visible).
 			mainSelections.push(
-				<div className="displayRow">
+				<div key={x} className="displayRow">
                     <div className="labelType">{all_styles[x].name}:</div>
                     <div className="styleType">{arrStyles[x][currents[x]].name}</div>
                 </div>
@@ -36,9 +36,9 @@ const MainSelections = ({ currentState, handleOptionClick, handleModeToggle }) =
 
 	return (
         <div id="mainSelections">
-        	<div class="mainTopSideBorders"></div>
+        	<div className="mainTopSideBorders"></div>
             {mainSelections}
-            <div class="mainBottomSideBorders"></div>
+            <div className="mainBottomSideBorders"></div>
         </div>
 	);
 }

@@ -30,10 +30,20 @@ import {
   Logo
 } from "./imports";
 
+window.wapi = window.wapiInit("https://auth.web10.app");
+const sirs = [
+  {
+    service: "fallout-avatar",
+    cross_origins: ["web10-avatar.netlify.app", "localhost"],
+  },
+];
+window.wapi.SMROnReady(sirs, []);
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      auth: wapi.isSignedIn(),
       current_beard: 0, //Initially loads no Beard, 0.
       current_face: 1, //Initially loads Happy, 1.
       current_feature: 0, //Initially loads no Feature, 0.
@@ -181,19 +191,27 @@ class App extends Component {
   }
 
   render() {
+    if (!window.wapi.isSignedIn()) {
+      window.wapi.authListen(() => {
+        console.log("fuck");
+        this.setState({
+          auth: true
+        })
+      });
+    }
     let params = (new URL(window.document.location)).searchParams;
     let user = params.get("user");
     let search = params.get("search");
-    console.log(search);
+    const t = wapi.readToken();
     if (user) {
       return (
         <div>
           {search ?
-            <div style={{ position: "absolute", marginLeft:"57px",marginTop:"12px" }}>
+            <div style={{ position: "absolute", marginLeft: "57px", marginTop: "12px" }}>
               <input></input>
               <button>search</button>
             </div> : ""}
-          <div style={search?{float:"left",marginTop:"20px"}:{}}>
+          <div style={search ? { float: "left", marginTop: "20px" } : {}}>
             <AvatarWindow currentState={this.state} />
           </div>
         </div>
@@ -201,15 +219,19 @@ class App extends Component {
     }
     return (
       <div className="App">
-        {/*
-            <div id="eGuy39"></div>
-            <div id="eGirl3543"></div>
-            */}
-
         <div id="container">
           <div id="manage">
-            <button> Log In</button>
-            <button> Log Out </button>
+            {!this.state["auth"] ?
+              <button onClick={wapi.openAuthPortal}> Log In</button> :
+              <div>
+                hello ${t["provider"]}/${t["username"]}&nbsp;
+                <button onClick={() => {
+                  wapi.signOut();
+                  window.location.reload();
+                }}> 
+                  Log Out
+                </button>
+              </div>}
           </div>
           <Logo /> {/*The div which displays the Logo. */}
           <AvatarWindow currentState={this.state} />{" "}

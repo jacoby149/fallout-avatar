@@ -12,7 +12,7 @@ const MinorSelections = ({ currentState }) => {
 	
     return (
         <div id="genderRaceAgeSelections">
-            <div class="minorTopSideBorders"></div>
+            <div className="minorTopSideBorders"></div>
             <div className="displayRow">
                 <div className="labelType">Gender:</div>
                 <div className="styleType">{genders[current_gender]['name']}</div>
@@ -21,7 +21,7 @@ const MinorSelections = ({ currentState }) => {
                 <div className="labelType">Race:</div>
                 <div className="styleType">{all_races[current_race]['name']}</div>
             </div>
-            <div class="minorBottomSideBorders"></div>
+            <div className="minorBottomSideBorders"></div>
         </div>
     );
 } 

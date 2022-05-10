@@ -30,7 +30,7 @@ const MainButtons = ({ currentState, handleOptionClick, handleModeToggle }) => {
 	for (var x = 0; x < all_styles.length; x++) { //Iterates through each item in all_styles JSON. Returns a buttonRow with left & right buttons, also label that updates from state.
 		if ((current_mode === 1) || (all_styles[x].mode === 1)) { //Will print the buttons if current_mode is 1 (set to Advanced) . Or will print if current item's Mode is 1 (always visible).
 			mainButtons.push(
-				<div className="buttonsRow">
+				<div key={x} className="buttonsRow">
 					<Button styleId={all_styles[x].id} arrLength={arrLength[x]} label="Prev" clicker={handleOptionClick} />
 					<div className="prevNextType">{all_styles[x].name} {currents[x] + 1}</div>
 					<Button styleId={all_styles[x].id} arrLength={arrLength[x]} label="Next" clicker={handleOptionClick} />
@@ -41,18 +41,18 @@ const MainButtons = ({ currentState, handleOptionClick, handleModeToggle }) => {
 
 	return (
         <div id="mainButtons">
-        	<div class="mainTopSideBorders"></div>
+        	<div className="mainTopSideBorders"></div>
         	<div className="buttonsRow">
                 <div className="leftCol genderText">{mode}:</div>
                 <div className="rightCol">
-                    <label class="switch">
+                    <label className="switch">
                         <input id="basicInput" type="checkbox" />
-                        <span class="slider basicSlider round" onClick={handleModeToggle}></span>
+                        <span className="slider basicSlider round" onClick={handleModeToggle}></span>
                     </label>
                 </div>
             </div>
             {mainButtons}
-            <div class="mainBottomSideBorders"></div>
+            <div className="mainBottomSideBorders"></div>
         </div>
 	);
 }
