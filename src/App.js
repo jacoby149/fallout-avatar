@@ -44,7 +44,7 @@ class App extends Component {
     super(props);
     this.state = {
       auth: wapi.isSignedIn(),
-      init:true,
+      init: true,
       current_beard: 0, //Initially loads no Beard, 0.
       current_face: 1, //Initially loads Happy, 1.
       current_feature: 0, //Initially loads no Feature, 0.
@@ -193,11 +193,11 @@ class App extends Component {
 
   componentDidUpdate(prevProps) {
     // update your avatar
-    let old = {...prevProps}
+    let old = { ...prevProps }
     delete old["auth"]
-    let data = {...this.state}
+    let data = { ...this.state }
     delete data["auth"]
-    wapi.update('fallout-avatar',old,{$set:data})
+    wapi.update('fallout-avatar', old, { $set: data })
   }
 
   render() {
@@ -213,19 +213,19 @@ class App extends Component {
         (resp) => {
           // create an initial avatar
           if (resp.data.length === 0) {
-            let data = {...this.state}
+            let data = { ...this.state }
             delete data["auth"]
-            wapi.create('fallout-avatar',data)
+            wapi.create('fallout-avatar', data)
           }
           // show your avatar
-          else if (this.state.init){
-            let a = {...resp.data[0]}
+          else if (this.state.init) {
+            let a = { ...resp.data[0] }
             delete a._id
-            let curr = {...this.state}
+            let curr = { ...this.state }
             delete curr["auth"]
-            a.init=false
+            a.init = false
             console.log(curr)
-            if (JSON.stringify(a)!==JSON.stringify(curr)) this.setState(a)
+            if (JSON.stringify(a) !== JSON.stringify(curr)) this.setState(a)
           }
         })
     }
@@ -236,14 +236,18 @@ class App extends Component {
     if (user) {
       return (
         <div>
-          {search ?
-            <div style={{ position: "absolute", marginLeft: "57px", marginTop: "12px" }}>
-              <input></input>
-              <button>search</button>
-            </div> : ""}
-          <div style={search ? { float: "left", marginTop: "20px" } : {}}>
-            <AvatarWindow currentState={this.state} />
-          </div>
+          {!this.state.init ?
+            <div>
+              {search ?
+                <div style={{ position: "absolute", marginLeft: "57px", marginTop: "12px" }}>
+                  <input></input>
+                  <button>search</button>
+                </div> : ""}
+              <div style={search ? { float: "left", marginTop: "20px" } : {}}>
+                <AvatarWindow currentState={this.state} />
+              </div>
+            </div> : ""
+          }
         </div>
       )
     }
@@ -264,30 +268,30 @@ class App extends Component {
               </div>}
           </div>
           <Logo /> {/*The div which displays the Logo. */}
-          <AvatarWindow currentState={this.state} />{" "}
-          {/* Generates the div where the avatar is shown. (Includes VaultSuit and VaultPerson.) */}
-          <MainButtons
-            currentState={this.state}
-            handleOptionClick={this.handleOptionClick}
-            handleModeToggle={this.handleModeToggle}
-          />{" "}
-          {/* Generates the div where most of the buttons live. */}
-          <MainSelections
-            currentState={this.state}
-            handleOptionClick={this.handleOptionClick}
-            handleModeToggle={this.handleModeToggle}
-          />{" "}
-          {/* Generates the div that shows the names for most of the Selections. */}
-          <MinorButtons
-            currentState={this.state}
-            handleGenderClick={this.handleGenderClick}
-            handleOptionClick={this.handleOptionClick}
-            handleRandomClick={this.handleRandomClick}
-          />{" "}
-          {/* The div where the Gender, Race, Age buttons live. */}
-          <MinorSelections currentState={this.state} />{" "}
-          {/* The div that shows the names for the Gender, Race, and Age Selections. */}
-          {/*
+              <AvatarWindow currentState={this.state} />{" "}
+              {/* Generates the div where the avatar is shown. (Includes VaultSuit and VaultPerson.) */}
+              <MainButtons
+                currentState={this.state}
+                handleOptionClick={this.handleOptionClick}
+                handleModeToggle={this.handleModeToggle}
+              />{" "}
+              {/* Generates the div where most of the buttons live. */}
+              <MainSelections
+                currentState={this.state}
+                handleOptionClick={this.handleOptionClick}
+                handleModeToggle={this.handleModeToggle}
+              />{" "}
+              {/* Generates the div that shows the names for most of the Selections. */}
+              <MinorButtons
+                currentState={this.state}
+                handleGenderClick={this.handleGenderClick}
+                handleOptionClick={this.handleOptionClick}
+                handleRandomClick={this.handleRandomClick}
+              />{" "}
+              {/* The div where the Gender, Race, Age buttons live. */}
+              <MinorSelections currentState={this.state} />{" "}
+              {/* The div that shows the names for the Gender, Race, and Age Selections. */}
+              {/*
                     <img id="iphoto" src={iphoto} alt="Hey!"/>
                     <img id="guy35" src={Guy35} alt="Hey!"/>
                 */}
