@@ -190,6 +190,11 @@ class App extends Component {
     });
   }
 
+  componentDidUpdate(prevProps) {
+    
+    // wapi.update()
+  }
+
   render() {
     if (!window.wapi.isSignedIn()) {
       window.wapi.authListen(() => {
