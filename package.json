@@ -11,7 +11,8 @@
     "node-sass": "^7.0.1",
     "react": "16.8.3",
     "react-dom": "16.8.3",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "web10-npm": "^1.0.4"
   },
   "devDependencies": {
     "typescript": "3.3.3"

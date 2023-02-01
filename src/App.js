@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import {wapiInit} from "web10-npm";
 import {
   all_races,
   genders,
@@ -30,7 +30,7 @@ import {
   Logo
 } from "./imports";
 
-window.wapi = window.wapiInit("https://auth.web10.app");
+window.wapi = wapiInit("https://auth.web10.app");
 const sirs = [
   {
     service: "fallout-avatar",
