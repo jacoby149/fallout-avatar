@@ -1,0 +1,16 @@
+{
+    "short_name": "fallout avatar",
+    "name": "fallout avatar",
+    "icons": [
+        {
+            "src": "fallout.jpg",
+            "type": "image/jpg",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "./",
+    "background_color": "#000000",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "description": "The web10 portal, manage your web10 account and authenticate"
+}
